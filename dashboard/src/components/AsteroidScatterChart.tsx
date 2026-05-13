@@ -123,7 +123,10 @@ export function AsteroidScatterChart({ asteroids }: AsteroidScatterChartProps) {
               cursor={{ stroke: '#00e5ff', strokeDasharray: '4 4', strokeOpacity: 0.4 }}
             />
             <Legend
+              verticalAlign="top"
+              align="right"
               wrapperStyle={{
+                paddingBottom: '20px',
                 fontFamily: 'JetBrains Mono',
                 fontSize: 11,
                 color: '#94a3b8',
