@@ -73,15 +73,15 @@ export function AsteroidScatterChart({ asteroids }: AsteroidScatterChartProps) {
     .filter((p): p is ScatterPoint => p !== null);
 
   return (
-    <div className="panel p-5">
+    <div className="panel-hud p-5 crt-lines">
       <div className="flex items-center gap-2 mb-4">
-        <Crosshair className="w-4 h-4 text-neon-cyan" />
-        <h2 className="font-mono text-sm uppercase tracking-widest text-slate-300">
-          Mapa de Trajetórias &middot; Distância × Diâmetro
+        <Crosshair className="w-4 h-4 text-neon-cyan animate-pulse-glow" />
+        <h2 className="font-display text-sm uppercase tracking-widest text-slate-200">
+          Mapa Analítico &middot; Distância × Diâmetro
         </h2>
       </div>
 
-      <div className="h-[420px] w-full">
+      <div className="h-[360px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <ScatterChart margin={{ top: 10, right: 20, bottom: 40, left: 30 }}>
             <CartesianGrid stroke="#13203a" strokeDasharray="3 3" />

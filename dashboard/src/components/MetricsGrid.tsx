@@ -7,13 +7,6 @@ interface MetricsGridProps {
   asteroids: Asteroid[];
 }
 
-function formatNumber(n: number, fractionDigits = 0): string {
-  return n.toLocaleString('pt-BR', {
-    minimumFractionDigits: fractionDigits,
-    maximumFractionDigits: fractionDigits,
-  });
-}
-
 export function MetricsGrid({ asteroids }: MetricsGridProps) {
   const total = asteroids.length;
 
@@ -37,26 +30,23 @@ export function MetricsGrid({ asteroids }: MetricsGridProps) {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       <MetricCard
         label="Asteroides Hoje"
-        value={formatNumber(total)}
+        value={total}
         unit="objetos"
         icon={Orbit}
         accent="cyan"
       />
       <MetricCard
         label="Maior Diâmetro"
-        value={largest?.estimated_diameter_max_meters
-          ? formatNumber(largest.estimated_diameter_max_meters, 1)
-          : '—'}
+        value={largest?.estimated_diameter_max_meters ?? 0}
         unit="metros"
         icon={Ruler}
         accent="amber"
         hint={largest?.name}
+        fractionDigits={1}
       />
       <MetricCard
         label="Mais Rápido"
-        value={fastest?.relative_velocity_km_h
-          ? formatNumber(fastest.relative_velocity_km_h, 0)
-          : '—'}
+        value={fastest?.relative_velocity_km_h ?? 0}
         unit="km/h"
         icon={Gauge}
         accent="green"
@@ -64,8 +54,8 @@ export function MetricsGrid({ asteroids }: MetricsGridProps) {
       />
       <MetricCard
         label="Ameaças Detectadas"
-        value={formatNumber(hazardousCount)}
-        unit={hazardousCount === 1 ? 'hazardous' : 'hazardous'}
+        value={hazardousCount}
+        unit="hazardous"
         icon={AlertTriangle}
         accent="red"
       />
